@@ -7,6 +7,8 @@ en:
     site_title: "Messenger-"
     signup: "Sign up!"
     login: "Log in"
+    logout: "Logout"
+    signed_in_as: "Signed in as"
   home:
     jumbo:
       title: "Welcome to the Messenger-"
