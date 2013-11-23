@@ -2,4 +2,22 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  app_name: "Messenger-"
+  header:
+    site_title: "Messenger-"
+  home:
+    jumbo:
+      title: "Welcome to the Messenger-"
+      text: "Message- is a simplest online messenger. It can send message and it is all! No more monstrous applications, pure messages. Sign up immediately to send message."
+      btn_signup: "Sign up!"
+  users:
+    new:
+      title: "Please fill the following form"
+      btn_signup: "Sign up!"
+      email: "Email:"
+      fname: "First name:"
+      lname: "Last name:"
+      gender: "Gender:"
+      dob: "Date of birth"
+    edit:
+      title: "Change personal information"
