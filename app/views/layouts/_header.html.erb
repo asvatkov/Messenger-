@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="col-md-3">
-    <div class="navbar-header">
-      <%= link_to t('header.site_title'), root_path, class: 'navbar-brand text-brand-top' %>
-    </div>
+  <div class="navbar-header">
+    <%= link_to t('header.site_title'), root_path, class: 'navbar-brand text-brand-top' %>
+  </div>
+  <div class="nav navbar-nav navbar-right">
+    <%= current_user == false ? render('layouts/header_unauth') : render('layouts/header_auth') %>
   </div>
 </nav>

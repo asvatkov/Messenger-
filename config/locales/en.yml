@@ -5,6 +5,8 @@ en:
   app_name: "Messenger-"
   header:
     site_title: "Messenger-"
+    signup: "Sign up!"
+    login: "Log in"
   home:
     jumbo:
       title: "Welcome to the Messenger-"
@@ -19,5 +21,43 @@ en:
       lname: "Last name:"
       gender: "Gender:"
       dob: "Date of birth"
+      pwd: "Password:"
+      pwd2: "Confirm password:"
     edit:
       title: "Change personal information"
+  user:
+    error:
+      pwd_length: "Password must be at least 3 characters long"
+      pwd_no_match: "Password and confirmation should match!"
+      email:
+        not_uniq: "User with same email already exists!"
+  error:
+    not_logged_in: "Log in first!"
+
+  mongoid:
+    models:
+      user:
+        attributes:
+          password:
+
+
+  sessions:
+    login_successfull: "Login successfull."
+    login_failed: "Login failed."
+    logged_out: "Logged out!"
+    new:
+      title: "Please sign in"
+      ph_email: "Email address"
+      ph_pwd: "Password"
+      btn_sign_in: "Sign in"
+    remember_me: "Remember me"
+  password_reset:
+    create:
+      notice: "Instructions have been sent to your email."
+    update:
+      success: "Password was successfully updated."
+    edit:
+      title: "Please choose a new password"
+      pwd_new: "New password"
+      pwd_confirm: "Password confirmation"
+      btn_change: "Change password"

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_login, :except => [:show, :create]
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -68,5 +70,19 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def activate
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      redirect_to(login_path, :notice => 'User was successfully activated.')
+    else
+      not_authenticated
+    end
+  end
+
+  def not_authenticated
+    # TODO: write method
+    redirect_to root_path
   end
 end

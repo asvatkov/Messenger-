@@ -1,0 +1,10 @@
+<%= form_tag sessions_path, :class => 'form-signin' do %>
+  <h2 class="form-signin-heading"><%= t('sessions.new.title') %></h2>
+  <%= text_field_tag :email, nil, :class => 'form-control', :required => true, :autofocus => true, :placeholder => t('sessions.new.ph_email') %>
+  <%= text_field_tag :password, nil, :class => 'form-control',:required => true, :type => 'password', :placeholder => t('sessions.new.ph_pwd') %>
+  <label class="checkbox">
+    <%= text_field_tag :remember, nil, :type => 'checkbox', :value => 'remember' %>
+    <%= t('sessions.remember_me') %>
+  </label>
+  <button type="submit" class="btn btn-lg btn-primary btn-block"><%= t('sessions.new.btn_sign_in') %></button>
+<% end %>

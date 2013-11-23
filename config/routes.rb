@@ -1,8 +1,23 @@
 Messenger::Application.routes.draw do
+  get "password_reset/create"
+
+  get "password_reset/edit"
+
+  get "password_reset/update"
+
   root :to => 'static_pages#home'
 
-  resources :users
+  resources :users do
+    member do
+      get :activate
+    end
+  end
 
+  resources :sessions
+  resources :password_resets
+
+  match 'login' => 'sessions#new', :as => :login
+  match 'logout' => 'sessions#destroy', :as => :logout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

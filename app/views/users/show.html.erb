@@ -1,3 +1,4 @@
+<!-- TODO: develop form -->
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -24,12 +25,6 @@
   <b>Gender:</b>
   <%= @user.gender %>
 </p>
-
-<p>
-  <b>Last signin:</b>
-  <%= @user.last_signin %>
-</p>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
