@@ -9,6 +9,9 @@ en:
     login: "Log in"
     logout: "Logout"
     signed_in_as: "Signed in as"
+    edit_profile: "Profile"
+    send_message: "Send message"
+    messages: "Messages"
   home:
     jumbo:
       title: "Welcome to the Messenger-"
@@ -63,3 +66,9 @@ en:
       pwd_new: "New password"
       pwd_confirm: "Password confirmation"
       btn_change: "Change password"
+  messages:
+    new:
+      to: "To:"
+      subject: "Subject:"
+      content: "Content:"
+      send: "Send"

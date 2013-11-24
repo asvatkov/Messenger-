@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_login, :except => [:show, :create]
+  before_filter :require_login, :except => [:show, :create, :new]
 
   # GET /users/1
   # GET /users/1.json

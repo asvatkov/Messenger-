@@ -1,4 +1,6 @@
 Messenger::Application.routes.draw do
+  resources :messages
+
   get "password_reset/create"
 
   get "password_reset/edit"
@@ -15,6 +17,7 @@ Messenger::Application.routes.draw do
 
   resources :sessions
   resources :password_resets
+  resources :messages
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
