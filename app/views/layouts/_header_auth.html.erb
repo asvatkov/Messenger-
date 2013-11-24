@@ -1,5 +1,5 @@
 <li><p class="navbar-text"><%= t('header.signed_in_as') + ' ' + current_user.email %></p><li>
 <li><%= link_to t('header.send_message'), new_message_path %></li>
-<li><%= link_to t('header.messages'), messages_path %></li>
+<li><%= link_to raw(t('header.messages') + ' <span class="badge" style="background-color:rgb(217, 83, 79);">' + unread_count.to_s + '</span>'), inbox_path %></li>
 <li><%= link_to t('header.edit_profile'), edit_user_path(current_user) %></li>
 <li><%= link_to t('header.logout'), logout_path %>

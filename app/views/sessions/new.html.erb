@@ -7,4 +7,5 @@
     <%= t('sessions.remember_me') %>
   </label>
   <button type="submit" class="btn btn-lg btn-primary btn-block"><%= t('sessions.new.btn_sign_in') %></button>
+  <%= link_to t('sessions.new.forgot_pwd'), password_reset_edit_path %>
 <% end %>

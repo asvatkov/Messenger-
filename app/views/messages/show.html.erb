@@ -1,1 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h4>
+  <%= @message.subject %>
+  <%= link_to t('messages.show.btn_destroy'), @message, :class => 'btn btn-danger pull-right',method: :delete, data: { confirm: t('messages.show.alert_delete')} if current_user.email == @message.to %>
+  <%= link_to t('messages.show.btn_reply'), new_message_path(:reply_to => current_user.email), :class => 'btn btn-default pull-right' %>
+</h4>
+<hr>
+<h5><%= "#{@from.fname} #{@from.lname} <#{@message.from}> at #{@message.created_at}" %></h5>
+<hr>
+<p><%= @message.content %></p>

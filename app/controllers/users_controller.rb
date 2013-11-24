@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @title = t('app_name') + " | #{@user.fname} #{@user.lname}"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -16,6 +17,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @btn_text = t('users.new.btn_signup')
+    @title = t('app_name') + ' | ' + t('users.new.title')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -26,6 +29,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @btn_text = t('users.edit.btn_update')
+    @title = t('app_name') + " | #{@user.fname} #{@user.lname}"
   end
 
   # POST /users
@@ -35,9 +40,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { flash.now[:info] = t('users.create.success'); redirect_to @user }
         format.json { render json: @user, status: :created, location: @user }
       else
+        @btn_text = t('users.new.btn_signup')
+        @user.password = ''
+        @user.password_confirmation = ''
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
@@ -51,7 +59,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { flash.now[:info] = t('users.update.success'); redirect_to @user }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -75,14 +83,15 @@ class UsersController < ApplicationController
   def activate
     if @user = User.load_from_activation_token(params[:id])
       @user.activate!
-      redirect_to(login_path, :notice => 'User was successfully activated.')
+      flash.now[:info] = t('users.activate.success')
+      redirect_to(login_path)
     else
       not_authenticated
     end
   end
 
   def not_authenticated
-    # TODO: write method
-    redirect_to root_path
+    flash.now[:alert] = t('users.alert_login')
+    redirect_to(root_path)
   end
 end

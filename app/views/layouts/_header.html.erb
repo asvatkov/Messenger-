@@ -3,6 +3,6 @@
     <%= link_to t('header.site_title'), root_path, class: 'navbar-brand text-brand-top' %>
   </div>
   <div class="nav navbar-nav navbar-right">
-    <%= current_user == false ? render('layouts/header_unauth') : render('layouts/header_auth') %>
+    <%= current_user ? render('layouts/header_auth') : render('layouts/header_unauth') %>
   </div>
 </nav>

@@ -28,8 +28,26 @@ en:
       dob: "Date of birth"
       pwd: "Password:"
       pwd2: "Confirm password:"
+      gender_male: "Male"
+      gender_female: "Female"
     edit:
       title: "Change personal information"
+      btn_update: "Update"
+    show:
+      name: "Name"
+      email: "Email"
+      gender: "Gender"
+      age: "Age"
+      gender_male: "Male"
+      gender_female: "Female"
+      title: "User details"
+    create:
+      success: "User was successfully created."
+    update:
+      success: "User was successfully updated."
+    activate:
+      success: "User was successfully activated."
+    alert_login: "Log in please."
   user:
     error:
       pwd_length: "Password must be at least 3 characters long"
@@ -38,13 +56,6 @@ en:
         not_uniq: "User with same email already exists!"
   error:
     not_logged_in: "Log in first!"
-
-  mongoid:
-    models:
-      user:
-        attributes:
-          password:
-
 
   sessions:
     login_successfull: "Login successfull."
@@ -55,6 +66,7 @@ en:
       ph_email: "Email address"
       ph_pwd: "Password"
       btn_sign_in: "Sign in"
+      forgot_pwd: "Forgot password?"
     remember_me: "Remember me"
   password_reset:
     create:
@@ -72,3 +84,27 @@ en:
       subject: "Subject:"
       content: "Content:"
       send: "Send"
+      title: "New message"
+    inbox:
+      title: "Inbox"
+      table:
+        th_from: "From"
+        th_subject: "Subject"
+        th_created_at: "Created"
+        th_actions: ""
+      alert_delete: "Are you sure?"
+      btn_destroy: "Destroy"
+    outbox:
+      title: "Outbox"
+    show:
+      title: "Message from"
+      subject: "Subject"
+      content: "Content"
+      reply: "Reply"
+      delete: "Delete"
+      btn_destroy: "Delete"
+      alert_delete: "Are you sure want to delete message?"
+      btn_reply: "Reply"
+    sidebar:
+      inbox: "Inbox"
+      outbox: "Outbox"

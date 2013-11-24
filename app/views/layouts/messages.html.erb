@@ -41,16 +41,13 @@
 <%= render 'layouts/header' %>
 
 <div class="container" id="content">
-  <div class="flash">
-    <%- if !notice.nil? -%>
-      <div class="alert alert-info"><%= notice %></div>
-    <%- end -%>
-    <%- if !alert.nil? -%>
-      <div class="alert alert-warning"><%= alert %></div>
-    <%- end -%>
+  <div class="col-md-2">
+    <%= render 'messages/lsidebar' %>
   </div>
 
-  <%= yield %>
+  <div class="col-md-10">
+    <%= yield %>
+  </div>
 </div>
 
 </body>

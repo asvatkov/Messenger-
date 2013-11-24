@@ -1,0 +1,4 @@
+<ul class="nav nav-pills nav-stacked">
+  <%= nav_link(raw(t('messages.sidebar.inbox') + ' <span class="badge pull-right">' + inbox_count.to_s + '</span>'), inbox_path) %>
+  <%= nav_link(raw(t('messages.sidebar.outbox') + ' <span class="badge pull-right">' + outbox_count.to_s + '</span>'), outbox_path) %>
+</ul>

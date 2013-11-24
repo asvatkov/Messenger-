@@ -1,7 +1,7 @@
 Rails.application.config.sorcery.submodules = [:core, :user_activation, :reset_password, :remember_me, :session_timeout, :activity_logging]
 
 Rails.application.config.sorcery.configure do |config|
-  config.session_timeout = 10.minutes
+  config.session_timeout = 100.minutes
 
   config.user_config do |user|
     user.username_attribute_names = :email

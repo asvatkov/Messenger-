@@ -1,4 +1,5 @@
 class PasswordResetController < ApplicationController
+  # TODO: make password reset working
   skip_before_filter :require_login
 
   # request password reset.

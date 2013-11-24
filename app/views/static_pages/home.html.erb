@@ -1,9 +1,12 @@
 <div class="jumbotron">
   <h1><%= t('home.jumbo.title') %></h1>
   <p><%=  t('home.jumbo.text') %></p>
-  <p><a class="btn btn-primary btn-lg" role="button"><%= t('home.jumbo.btn_signup') %></a></p>
-
+  <% if !current_user %><p><%= link_to t('home.jumbo.btn_signup'), new_user_path, :class => 'btn btn-primary btn-lg' %></p><% end %>
 </div>
 
-<p>Users active now:</p>
-<p><%= current_users_list %></p>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= "#{active_users.count} users are currently online:" %></div>
+  <div class="panel-body">
+    <%= raw(active_users.map {|u| link_to "#{u.fname} #{u.lname}", user_path(u)}.join(', ')) %>
+  </div>
+</div>

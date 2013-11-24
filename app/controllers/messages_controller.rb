@@ -1,11 +1,22 @@
 class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
-  def index
-    @messages = Message.where(:to => current_user.email)
+  def inbox
+    @messages = Message.where(:to => current_user.email).order_by([:created_at, :desc])
+    @title = t('app_name') + ' | ' + t('messages.inbox.title')
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # inbox.html.erb
+      format.json { render json: @messages }
+    end
+  end
+
+  def outbox
+    @messages = Message.where(:from => current_user.email).order_by([:created_at, :desc])
+    @title = t('app_name') + ' | ' + t('messages.outbox.title')
+
+    respond_to do |format|
+      format.html # outbox.html.erb
       format.json { render json: @messages }
     end
   end
@@ -14,6 +25,9 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
+    @message.update_attributes!(:unread => false) if (@message.to == current_user.email)
+    @from = User.where(:email => @message.from).first
+    @title = t('app_name') + ' | ' + t('messages.show.title')
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +39,8 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @reply_to = params[:reply_to]
+    @title = t('app_name') + ' | ' + t('messages.new.title')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +52,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.from = current_user.email
 
     respond_to do |format|
       if @message.save
@@ -52,11 +69,16 @@ class MessagesController < ApplicationController
   # DELETE /messages/1.json
   def destroy
     @message = Message.find(params[:id])
-    @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url }
-      format.json { head :no_content }
+      if @message.to == current_user.email
+        @message.destroy
+        format.html { redirect_to messages_url }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to inbox_url, error: 'RRRR' }
+        format.json { head :no_content }
+      end
     end
   end
 end
