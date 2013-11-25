@@ -21,4 +21,5 @@ gem 'sorcery'
 
 group :development do
   gem 'pry'
+  gem 'letter_opener'
 end

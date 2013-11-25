@@ -1,24 +1,26 @@
 class UserMailer < ActionMailer::Base
+  # TODO: bug. mail from different domain.
   default from: 'info@messenger_minus.com'
 
   def activation_needed_email(user)
     @user = user
-    @url  = "http://http://messenger-minus.herokuapp.com//users/#{user.activation_token}/activate"
+    @url  = activate_user_url(user.activation_token)
     mail(:to => user.email,
-         :subject => "Welcome to My Awesome Site")
+         :subject => t('user_mailer.activation_needed.subject'))
   end
 
   def activation_success_email(user)
     @user = user
-    @url  = "http://http://messenger-minus.herokuapp.com//login"
+    @url  = login_url
+    # TODO: bug. only this subject ends with point
     mail(:to => user.email,
-         :subject => "Your account is now activated")
+         :subject => t('user_mailer.activation_success.subject'))
   end
 
   def reset_password_email(user)
     @user = user
-    @url  = "http://http://messenger-minus.herokuapp.com//password_resets/#{user.reset_password_token}/edit"
+    @url  = edit_password_reset_url(user.reset_password_token)
     mail(:to => user.email,
-         :subject => "Your password reset request")
+         :subject => t('user_mailer.reset_password.subject'))
   end
 end

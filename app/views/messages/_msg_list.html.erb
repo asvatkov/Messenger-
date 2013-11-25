@@ -4,8 +4,10 @@
   <tr>
     <th class="col-sm-2"><%= t('messages.inbox.table.th_from') %></th>
     <th><%= t('messages.inbox.table.th_subject') %></th>
-    <th class="col-sm-3"><%= t('messages.inbox.table.th_created_at') %></th>
-    <% if is_inbox %><th class="col-sm-1"><%= t('messages.inbox.table.th_actions') %></th><% end %>
+    <% if is_inbox %>
+      <th class="col-sm-3"><%= t('messages.inbox.table.th_created_at') %></th>
+      <th class="col-sm-1"><%= t('messages.inbox.table.th_actions') %></th>
+    <% end %>
   </tr>
   </thead>
 

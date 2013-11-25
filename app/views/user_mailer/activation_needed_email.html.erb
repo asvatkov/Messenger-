@@ -4,13 +4,15 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
+<%# TODO: bug. Messager- instead of Messenger- %>
 <h1>Welcome to Messager-, <%= @user.email %></h1>
 <p>
   You have successfully signed up to Messager-,
+  <%# TODO: bug. unnecessary http:// before url %>
   your username is: <%= @user.email %>.<br/>
 </p>
 <p>
-  To login to the site, just follow this link: <%= @url %>.
+  To login to the site, just follow this link: http://<%= @url %>.
 </p>
 <p>Thanks for joining and have a great day!</p>
 </body>

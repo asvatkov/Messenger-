@@ -10,6 +10,7 @@ Messenger::Application.configure do
         :authentication => :plain
     }
   end
+  config.action_mailer.default_url_options = {:host => 'messenger-minus.herokuapp.com'}
 
   # Code is not reloaded between requests
   config.cache_classes = true
@@ -25,7 +26,7 @@ Messenger::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true

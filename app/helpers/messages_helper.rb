@@ -16,7 +16,9 @@ module MessagesHelper
   end
 
   def recipients
-    User.where(:activation_state => 'active')
+    # TODO: bug. all users in recipients list. only active should present
+    User.all
+    #User.where(:activation_state => 'active')
   end
 
   def user_path_by_email(email)

@@ -1,9 +1,5 @@
 Messenger::Application.routes.draw do
-  get "password_reset/create"
-
-  get "password_reset/edit"
-
-  get "password_reset/update"
+  resources :password_reset, only: [:new, :edit, :create, :update]
 
   root :to => 'static_pages#home'
 
@@ -14,7 +10,7 @@ Messenger::Application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :messages, except: [:index, :edit, :update]
+  resources :messages, except: [:index, :update]
 
   get 'inbox', :to => 'messages#inbox'
   get 'outbox', :to => 'messages#outbox'

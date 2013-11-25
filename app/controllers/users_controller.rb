@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_login, :except => [:show, :create, :new]
+  # TODO: bug. impossible to show user details for unauthorized, but online list is present on home page and links are active
+  before_filter :require_login, :except => [:create, :new, :activate]
 
   # GET /users/1
   # GET /users/1.json
@@ -40,13 +41,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { flash.now[:info] = t('users.create.success'); redirect_to @user }
+        format.html { flash.now[:info] = t('users.create.success'); redirect_to root_path }
         format.json { render json: @user, status: :created, location: @user }
       else
         @btn_text = t('users.new.btn_signup')
         @user.password = ''
         @user.password_confirmation = ''
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
         format.html { flash.now[:info] = t('users.update.success'); redirect_to @user }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -70,6 +71,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   # DELETE /users/1.json
+  # TODO: bug. impossible to delete user from service. no view.
   def destroy
     @user = User.find(params[:id])
     @user.destroy

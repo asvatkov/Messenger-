@@ -1,0 +1,8 @@
+<%= form_tag password_reset_index_path, :method => :post, :class => 'form-signin' do %>
+  <div class="form-control">
+    <%= label_tag :email %><br />
+    <%# TODO: bug. incorrect corners for the text field %>
+    <%= text_field_tag :email, nil, :class => 'form-control', :required => true %>
+    <button type="submit" class="btn btn-lg btn-primary btn-block"><%= t('password_reset.new.btn_reset') %></button>
+  </div>
+<% end %>

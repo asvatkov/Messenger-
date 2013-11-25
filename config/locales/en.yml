@@ -78,6 +78,8 @@ en:
       pwd_new: "New password"
       pwd_confirm: "Password confirmation"
       btn_change: "Change password"
+    new:
+      btn_reset: "Reset my password!"
   messages:
     new:
       to: "To:"
@@ -108,3 +110,14 @@ en:
     sidebar:
       inbox: "Inbox"
       outbox: "Outbox"
+    create:
+      notice: "Message was successfully created."
+    destroy:
+      error: "Error. Unable to delete message."
+  user_mailer:
+    activation_needed:
+      subject: "Welcome to My Awesome Site"
+    activation_success:
+      subject: "Your account is now activated."
+    reset_password:
+      subject: "Your password reset request"

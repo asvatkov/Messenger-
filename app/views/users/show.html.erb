@@ -18,6 +18,7 @@
   </tr>
   <tr>
     <td><%= t('users.show.age') %></td>
+    <%# TODO: bug. leap years not taken into count %>
     <td><%= ((Date.today - @user.dob) / 365).to_i %></td>
   </tr>
 </table>

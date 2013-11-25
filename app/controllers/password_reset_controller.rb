@@ -1,6 +1,9 @@
 class PasswordResetController < ApplicationController
-  # TODO: make password reset working
-  skip_before_filter :require_login
+  skip_filter :require_login
+
+  def new
+
+  end
 
   # request password reset.
   # you get here when the user entered his email in the reset password form and submitted it.
@@ -12,7 +15,9 @@ class PasswordResetController < ApplicationController
 
     # Tell the user instructions have been sent whether or not email was found.
     # This is to not leak information to attackers about which emails exist in the system.
-    redirect_to(root_path, :notice => t('password_reset.create.notice'))
+    # TODO: bug. no any message after sending password reset mail. just redirect to homepage
+    redirect_to(root_path)
+    #redirect_to(root_path, :notice => t('password_reset.create.notice'))
   end
 
   # This is the reset password form.

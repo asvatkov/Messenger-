@@ -10,10 +10,13 @@
     </div>
 <% end %>
 
-<%= form_for @user, :url => password_reset_path, :class => 'form-signin' do %>
+<%# TODO: bug. bad html code %>
+<%= form_for @user, :url => password_reset_path, :class => 'form-signin' do |f| %>
+    <%# TODO: bug. title everywhere is h4. here h2. %>
     <h2 class="form-signin-heading"><%= t('password_reset.edit.title') %></h2>
-    <%= text_field_tag :password, nil, :class => 'form-control', :required => true, :autofocus => true, :placeholder => t('password_reset.edit.pwd_new') %>
-    <%= text_field_tag :password_confirmation, nil, :class => 'form-control',:required => true, :type => 'password', :placeholder => t('password_reset.edit.pwd_confirm') %>
+    <%# TODO: bug. field type must be password %>
+    <%= f.text_field :password, :class => 'form-control', :required => true, :autofocus => true, :placeholder => t('password_reset.edit.pwd_new') %>
+    <%= f.text_field :password_confirmation, :class => 'form-control',:required => true, :type => 'password', :placeholder => t('password_reset.edit.pwd_confirm') %>
     <%= hidden_field_tag :token, @token %>
     <button type="submit" class="btn btn-lg btn-primary btn-block"><%= t('password_reset.edit.btn_change') %></button>
 <% end %>

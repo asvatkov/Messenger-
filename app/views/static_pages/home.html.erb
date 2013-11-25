@@ -1,10 +1,12 @@
 <div class="jumbotron">
   <h1><%= t('home.jumbo.title') %></h1>
+  <%# TODO: bug. Message- in text instead of Messenger- %>
   <p><%=  t('home.jumbo.text') %></p>
   <% if !current_user %><p><%= link_to t('home.jumbo.btn_signup'), new_user_path, :class => 'btn btn-primary btn-lg' %></p><% end %>
 </div>
 
 <div class="panel panel-default">
+  <%# TODO: bug. when 1 user online, text is still pluralized %>
   <div class="panel-heading"><%= "#{active_users.count} users are currently online:" %></div>
   <div class="panel-body">
     <%= raw(active_users.map {|u| link_to "#{u.fname} #{u.lname}", user_path(u)}.join(', ')) %>

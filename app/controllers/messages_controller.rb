@@ -12,7 +12,8 @@ class MessagesController < ApplicationController
   end
 
   def outbox
-    @messages = Message.where(:from => current_user.email).order_by([:created_at, :desc])
+    # TODO: bug. messages incorrectly ordered
+    @messages = Message.where(:from => current_user.email)#.order_by([:created_at, :desc])
     @title = t('app_name') + ' | ' + t('messages.outbox.title')
 
     respond_to do |format|
@@ -25,7 +26,8 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
-    @message.update_attributes!(:unread => false) if (@message.to == current_user.email)
+    # TODO: bug. user can make message read even if he is not recipient
+    @message.update_attributes!(:unread => false)# if (@message.to == current_user.email)
     @from = User.where(:email => @message.from).first
     @title = t('app_name') + ' | ' + t('messages.show.title')
 
@@ -56,7 +58,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to inbox_url, notice: t('messages.create.notice') }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
@@ -73,10 +75,11 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.to == current_user.email
         @message.destroy
-        format.html { redirect_to messages_url }
+        format.html { redirect_to inbox_url }
         format.json { head :no_content }
       else
-        format.html { redirect_to inbox_url, error: 'RRRR' }
+        # TODO: bug. error message is not shown.
+        format.html { redirect_to inbox_url, error: t('messages.destroy.error') }
         format.json { head :no_content }
       end
     end
