@@ -15,7 +15,7 @@ en:
   home:
     jumbo:
       title: "Welcome to the Messenger-"
-      text: "Message- is a simplest online messenger. It can send message and it is all! No more monstrous applications, pure messages. Sign up immediately to send message."
+      text: "Messenger- is a simplest online messenger. It can send message and it is all! No more monstrous applications, pure messages. Sign up immediately to send message."
       btn_signup: "Sign up!"
   users:
     new:
