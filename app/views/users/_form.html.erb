@@ -38,7 +38,7 @@
       </div>
       <div class="radio-inline">
         <%# TODO: bug. female users radiobutton doesn't automatically checked on edit or sign up fail %>
-        <%= f.text_field :gender, :type => 'radio', :value => 'F' %>
+        <%= f.text_field :gender, :type => 'radio', :value => 'F', :checked => @user ? @user.gender.eql?('F') : false %>
         <%= t('users.new.gender_female') %>
       </div>
     </div>
