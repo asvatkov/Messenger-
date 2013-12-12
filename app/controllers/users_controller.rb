@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user)
     @btn_text = t('users.edit.btn_update')
     @title = t('app_name') + " | #{@user.fname} #{@user.lname}"
   end
@@ -57,6 +58,7 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    redirect_to root_path unless current_user?(@user)
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -95,5 +97,9 @@ class UsersController < ApplicationController
   def not_authenticated
     flash.now[:alert] = t('users.alert_login')
     redirect_to(root_path)
+  end
+
+  def current_user?(user)
+    return user.email == current_user.email
   end
 end
