@@ -16,8 +16,7 @@ class PasswordResetController < ApplicationController
     # Tell the user instructions have been sent whether or not email was found.
     # This is to not leak information to attackers about which emails exist in the system.
     # TODO: bug. no any message after sending password reset mail. just redirect to homepage
-    redirect_to(root_path)
-    #redirect_to(root_path, :notice => t('password_reset.create.notice'))
+    redirect_to(root_path, :notice => t('password_reset.create.notice'))
   end
 
   # This is the reset password form.
