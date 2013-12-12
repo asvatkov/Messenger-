@@ -9,8 +9,8 @@
     <%= link_to t('header.site_title'), root_path, class: 'navbar-brand text-brand-top' %>
   </div>
   <div class="collapse navbar-collapse" id="header_collapse">
-    <div class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
       <%= current_user ? render('layouts/header_auth') : render('layouts/header_unauth') %>
-    </div>
+    </ul>
   </div>
 </nav>

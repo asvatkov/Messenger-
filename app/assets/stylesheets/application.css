@@ -27,6 +27,16 @@
     word-wrap: break-word;
 }
 
+.navtext {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+}
+
+.navtext:hover {
+    color: #777777 !important;
+}
+
 /* ==== Login ===================*/
 
 .form-signin {
