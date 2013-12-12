@@ -13,7 +13,7 @@ class User
 
   validates_date :dob, :before => lambda { 5.years.ago },
                                  :before_message => "must be at least 18 years old",
-                                 :on_or_after => lambda { 105.years.from_now },
+                                 :on_or_after => lambda { 105.years.ago },
                                  :on_or_after_message => "must be less than 105 yeas old"
   validates_length_of :password, :minimum => 3, :if => :password
   validates_confirmation_of :password, :if => :password

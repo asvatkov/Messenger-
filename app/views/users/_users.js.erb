@@ -1,0 +1,8 @@
+$(document).ready(function(){
+  $("#dob_dp").datepicker({
+    startDate: "<%= 105.years.ago.strftime("%m/%d/%Y") %>",
+    endDate: "<%= 5.years.ago.strftime("%m/%d/%Y") %>",
+    autoclose: true,
+    startView: 2
+  });
+});

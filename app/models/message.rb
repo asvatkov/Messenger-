@@ -17,8 +17,7 @@ class Message
   validates_presence_of :to, :from, :subject, :content
 
   validates_length_of :subject, :maximum => 100
-  # TODO: bug. content maxlength == 1001 expected 1000
-  validates_length_of :content, :maximum => 1001
+  validates_length_of :content, :maximum => 1000
 
   private
   def set_time

@@ -19,6 +19,7 @@ gem 'therubyracer'
 gem 'less-rails'
 gem 'sorcery'
 gem 'validates_timeliness', '~> 3.0'
+gem 'bootstrap-datepicker-rails'
 
 group :development do
   gem 'pry'
