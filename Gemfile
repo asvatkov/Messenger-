@@ -18,6 +18,7 @@ gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branc
 gem 'therubyracer'
 gem 'less-rails'
 gem 'sorcery'
+gem 'validates_timeliness', '~> 3.0'
 
 group :development do
   gem 'pry'

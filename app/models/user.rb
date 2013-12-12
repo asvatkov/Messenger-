@@ -4,7 +4,6 @@ class User
   field :email, type: String
   field :fname, type: String
   field :lname, type: String
-  # TODO: bug. dob invalidated
   field :dob, type: Date
   field :gender, type: String
 
@@ -12,7 +11,10 @@ class User
 
   attr_accessible :email, :fname, :lname, :dob, :gender, :password, :password_confirmation
 
-  # TODO: bug. model errors are not localized
+  validates_date :dob, :before => lambda { 5.years.ago },
+                                 :before_message => "must be at least 18 years old",
+                                 :on_or_after => lambda { 105.years.from_now },
+                                 :on_or_after_message => "must be less than 105 yeas old"
   validates_length_of :password, :minimum => 3, :if => :password
   validates_confirmation_of :password, :if => :password
 
