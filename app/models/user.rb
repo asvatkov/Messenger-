@@ -30,8 +30,7 @@ class User
 
   validates_length_of :email, :maximum => 30
   validates_length_of :fname, :maximum => 30
-  # TODO: bug. last name could be size 40 expected 30
-  validates_length_of :lname, :maximum => 40
+  validates_length_of :lname, :maximum => 30
 
   def name_with_email
     "#{fname} #{lname} <#{email}>"
