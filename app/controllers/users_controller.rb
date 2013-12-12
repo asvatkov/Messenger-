@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { flash.now[:info] = t('users.update.success'); redirect_to @user }
+        format.html { flash[:notice] = t('users.update.success'); redirect_to @user }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -87,7 +87,7 @@ class UsersController < ApplicationController
   def activate
     if @user = User.load_from_activation_token(params[:id])
       @user.activate!
-      flash.now[:info] = t('users.activate.success')
+      flash[:notice] = t('users.activate.success')
       redirect_to(login_path)
     else
       not_authenticated

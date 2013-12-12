@@ -22,12 +22,9 @@
 
 <div class="container" id="content">
   <div class="flash">
-    <%- if !notice.nil? -%>
-      <div class="alert alert-info"><%= notice %></div>
-    <%- end -%>
-    <%- if !alert.nil? -%>
-      <div class="alert alert-warning"><%= alert %></div>
-    <%- end -%>
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
   </div>
 
   <div class="col-md-2">
