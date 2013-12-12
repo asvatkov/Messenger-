@@ -10,7 +10,7 @@ class User
 
   authenticates_with_sorcery!
 
-  attr_accessible :email, :fname, :lname, :dob, :gender, :password#, :password_confirmation
+  attr_accessible :email, :fname, :lname, :dob, :gender, :password, :password_confirmation
 
   # TODO: bug. model errors are not localized
   validates_length_of :password, :minimum => 3, :if => :password
