@@ -11,7 +11,7 @@
 <% end %>
 
 <%# TODO: bug. bad html code %>
-<%= form_for @user, :url => password_reset_path, :class => 'form-signin' do |f| %>
+<%= form_for @user, :url => password_reset_path, :html => { :class => 'form-signin' } do |f| %>
     <%# TODO: bug. title everywhere is h4. here h2. %>
     <h2 class="form-signin-heading"><%= t('password_reset.edit.title') %></h2>
     <%# TODO: bug. field type must be password %>
