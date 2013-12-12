@@ -18,7 +18,10 @@ class User
 
   validates_uniqueness_of :email, :message => 'user.error.email.not_uniq'
 
-  validates_presence_of :email, :fname, :lname, :dob, :gender
+  validates_presence_of :fname, :lname, :dob, :gender
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
 
   # TODO: bug. gender invalidated. possible to change form to submit any value to gender
   # validates_inclusion_of :gender, :in => ['M', 'F']
