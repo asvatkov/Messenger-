@@ -17,6 +17,16 @@
     padding: 60px 15px 0;
 }
 
+.table {
+    table-layout: fixed;
+}
+
+.table td,
+.msg-header,
+.msg-text {
+    word-wrap: break-word;
+}
+
 /* ==== Login ===================*/
 
 .form-signin {
