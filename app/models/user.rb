@@ -13,10 +13,10 @@ class User
   attr_accessible :email, :fname, :lname, :dob, :gender, :password#, :password_confirmation
 
   # TODO: bug. model errors are not localized
-  validates_length_of :password, :minimum => 3, :message => 'user.error.pwd_length', :if => :password
-  validates_confirmation_of :password, :message => 'user.error.pwd_no_match', :if => :password
+  validates_length_of :password, :minimum => 3, :if => :password
+  validates_confirmation_of :password, :if => :password
 
-  validates_uniqueness_of :email, :message => 'user.error.email.not_uniq'
+  validates_uniqueness_of :email
 
   validates_presence_of :fname, :lname, :dob, :gender
 

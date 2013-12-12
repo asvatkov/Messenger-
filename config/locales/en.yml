@@ -48,12 +48,6 @@ en:
     activate:
       success: "User was successfully activated."
     alert_login: "Log in please."
-  user:
-    error:
-      pwd_length: "Password must be at least 3 characters long"
-      pwd_no_match: "Password and confirmation should match!"
-      email:
-        not_uniq: "User with same email already exists!"
   error:
     not_logged_in: "Log in first!"
 
@@ -121,3 +115,13 @@ en:
       subject: "Your account is now activated."
     reset_password:
       subject: "Your password reset request"
+
+  mongoid:
+    errors:
+      messages:
+        confirmation: ": %{attribute} and it's confirmation should match!"
+        blank: ": should be present"
+        too_short: ": must be at least %{count} symbols long"
+        too_long: ": must be maximum %{count} symbols long"
+        taken: ": this address is already taken"
+        invalid: ": incorrect format"
