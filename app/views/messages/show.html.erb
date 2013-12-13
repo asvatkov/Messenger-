@@ -16,4 +16,4 @@
 <h5><%= "#{t('messages.show.from')} #{@from.fname} #{@from.lname} <#{@message.from}> at #{@message.created_at}" %></h5>
 <h5><%= "#{t('messages.show.to')} #{@to.fname} #{@to.lname} <#{@message.to}>" %></h5>
 <hr>
-<p class="msg-text"><%= @message.content %></p>
+<p class="msg-text"><%= simple_format(@message.content) %></p>
