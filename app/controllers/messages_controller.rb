@@ -26,8 +26,7 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
-    # TODO: bug. user can make message read even if he is not recipient
-    @message.update_attributes!(:unread => false)# if (@message.to == current_user.email)
+    @message.update_attributes!(:unread => false) if (@message.to == current_user.email)
     @from = User.where(:email => @message.from).first
     @title = t('app_name') + ' | ' + t('messages.show.title')
 
