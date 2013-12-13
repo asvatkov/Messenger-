@@ -102,6 +102,8 @@ en:
       btn_destroy: "Delete"
       alert_delete: "Are you sure want to delete message?"
       btn_reply: "Reply"
+      from: "From:"
+      to: "To:"
     sidebar:
       inbox: "Inbox"
       outbox: "Outbox"

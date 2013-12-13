@@ -28,6 +28,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.update_attributes!(:unread => false) if (@message.to == current_user.email)
     @from = User.where(:email => @message.from).first
+    @to = User.where(:email => @message.to).first
     @title = t('app_name') + ' | ' + t('messages.show.title')
 
     respond_to do |format|
