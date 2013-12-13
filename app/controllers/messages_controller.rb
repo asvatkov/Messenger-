@@ -78,7 +78,6 @@ class MessagesController < ApplicationController
         format.html { redirect_to inbox_url }
         format.json { head :no_content }
       else
-        # TODO: bug. error message is not shown.
         format.html { redirect_to inbox_url, error: t('messages.destroy.error') }
         format.json { head :no_content }
       end

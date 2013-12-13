@@ -2,10 +2,10 @@
 <table class='table table-hover'>
   <thead>
   <tr>
-    <th class="col-sm-2"><%= t('messages.inbox.table.th_from') %></th>
+    <th class="col-sm-2"><%= is_inbox? ? t('messages.inbox.table.th_to') : t('messages.inbox.table.th_from') %></th>
     <th><%= t('messages.inbox.table.th_subject') %></th>
+    <th class="col-sm-3"><%= t('messages.inbox.table.th_created_at') %></th>
     <% if is_inbox %>
-      <th class="col-sm-3"><%= t('messages.inbox.table.th_created_at') %></th>
       <th class="col-sm-1"><%= t('messages.inbox.table.th_actions') %></th>
     <% end %>
   </tr>
@@ -14,7 +14,12 @@
   <tbody>
   <% @messages.each do |message| %>
     <tr <%= raw('class="warning"') if message.unread %> onclick="location.href='<%= message_path(message) %>'" style="cursor:pointer;">
-      <td><%= link_to message.from, user_path_by_email(message.from) %></td>
+      <td>
+        <% if is_inbox%>
+          <%= link_to message.from, user_path_by_email(message.from) %></td>
+        <% else %>
+            <%= link_to message.to, user_path_by_email(message.to) %></td>
+        <% end %>
       <td><%= message.subject %></td>
       <td><%= message.created_at %></td>
       <% if is_inbox %>
