@@ -6,7 +6,7 @@
     <div class="col-md-3">
       <%= link_to t('messages.show.btn_destroy'), @message, :class => 'btn btn-danger pull-right',method: :delete, data: { confirm: t('messages.show.alert_delete')} if current_user.email == @message.to %>
       <%# TODO: bug. user can reply to his own message %>
-      <%= link_to t('messages.show.btn_reply'), new_message_path(:reply_to => current_user.email), :class => 'btn btn-default pull-right' %>
+      <%= link_to t('messages.show.btn_reply'), new_message_path(:reply_to => @message.from), :class => 'btn btn-default pull-right' %>
     </div>
   </div>
 </h4>
