@@ -13,15 +13,15 @@
 
   <tbody>
   <% @messages.each do |message| %>
-    <tr <%= raw('class="warning"') if message.unread %> onclick="location.href='<%= message_path(message) %>'" style="cursor:pointer;">
-      <td>
+    <tr <%= raw('class="warning"') if message.unread %> style="cursor:pointer;">
+      <td onclick="location.href='<%= message_path(message) %>'" >
         <% if is_inbox %>
           <%= link_to message.from, user_path_by_email(message.from) %></td>
         <% else %>
             <%= link_to message.to, user_path_by_email(message.to) %></td>
         <% end %>
-      <td><%= message.subject %></td>
-      <td><%= message.created_at %></td>
+      <td onclick="location.href='<%= message_path(message) %>'" ><%= message.subject %></td>
+      <td onclick="location.href='<%= message_path(message) %>'" ><%= message.created_at %></td>
       <% if is_inbox %>
       <td>
         <%= link_to t('messages.inbox.btn_destroy'), message, :class => 'btn btn-danger btn-xs',method: :delete, data: { confirm: t('messages.inbox.alert_delete')} %>
