@@ -1,12 +1,14 @@
+<% own_message = @message.from == current_user.email %>
 <h4>
   <div class="row">
     <div class="col-md-9">
       <span class="msg-header"><%= @message.subject %></span>
     </div>
     <div class="col-md-3">
-      <%= link_to t('messages.show.btn_destroy'), @message, :class => 'btn btn-danger pull-right', method: :delete, data: { confirm: t('messages.show.alert_delete')} if current_user.email == @message.to %>
-      <%# TODO: bug. user can reply to his own message %>
-      <%= link_to t('messages.show.btn_reply'), new_message_path(:reply_to => @message.from), :class => 'btn btn-default pull-right' %>
+      <% unless own_message %>
+        <%= link_to t('messages.show.btn_destroy'), @message, :class => 'btn btn-danger pull-right', method: :delete, data: { confirm: t('messages.show.alert_delete')} if current_user.email == @message.to %>
+        <%= link_to t('messages.show.btn_reply'), new_message_path(:reply_to => @message.from), :class => 'btn btn-default pull-right' %>
+      <% end %>
     </div>
   </div>
 </h4>
